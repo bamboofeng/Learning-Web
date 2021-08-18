@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 利用CSS实现三角形：原理，边框的均分。 */
+        #triangle{
+            width:0;
+            height:0;
+            border-top:50px solid blue;
+            border-right:50px solid red;
+            border-bottom:50px solid green;
+            border-left:50px solid yellow;
+        }
+
+        #triangle-up{
+            width:0;
+            height:0;
+            border-left:100px solid transparent;
+            border-right:100px solid transparent;
+            border-bottom:100px solid red;
+        }
+
+        #rectangle {
+            width: 200px;
+            height: 100px;
+            background: red;
+        }
+
+        /* 拖拽部分样式 */
+        .one {
+            width: 100px;
+            height: 100px;
+            border:1px solid #000;
+            background-color:green;
+        }
+
+        .two {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            left: 300px;
+            top: 100px;
+            border:1px solid #000;
+            background-color: red; 
+        }
+    </style>
+</head>
+<body>
+    <!-- 练习一：css实现三角形＋拖拽元素 -->
+    <div id="triangle" draggable="true"></div>
+    <div id="triangle-up"></div>
+    <div id="rectangle"></div>
+    <!-- 练习二：拖拽的目标元素事件 -->
+    <div class="one" draggable="true"></div>
+    <div class="two"></div>
+</body>
+<script>
+    var box = document.querySelector('#triangle');
+
+    //绑定拖拽事件
+
+    //拖拽开始
+    box.ondragstart = function(){
+        console.log('拖拽开始.');
+    }
+
+    // 拖拽离开:鼠标拖拽时离开被拖拽的元素时触发
+    box.ondragleave = function(){
+        console.log('拖拽离开..');
+    }
+
+    // 拖拽结束
+    box.ondragend = function(){
+        console.log('拖拽结束...');
+        console.log('----------');
+    }
+
+    box.ondrag = function(){
+        console.log('拖拽');
+    }
+
+    var two = document.querySelector('.two');
+    // 目标元素的拖拽事件
+    // 当被拖拽元素进入时出发
+    two.ondragenter = function(){
+        console.log('来了.');
+    }
+
+    // 当被拖拽元素离开时出发
+    two.ondragleave = function(){
+        console.log('走了..');
+    }
+
+    // 当被拖拽元素在目标元素上时，连续触发
+    two.ondragover = function(e){
+        e.preventDefault();
+        console.log('over...');
+    }
+
+    // 当在目标元素上松开鼠标时触发
+    two.ondrop = function(){
+        console.log("松开鼠标了...");
+    }
+
+</script>
+</html>

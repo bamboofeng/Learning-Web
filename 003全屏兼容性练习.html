@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width:250px;
+            height:250px;
+            background-color:green;
+            margin: 100px auto;
+            border-radius: 50%;
+        }
+
+        .box:-webkit-full-screen {
+            background-color:red;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    
+    <script>
+        var box = document.querySelector('.box');
+        // box.requestFullscreen();   
+        //直接这样写是没有效果的。之所以无效，应该是浏览器的机制，必须要点一下才可以实现全屏功能。
+        // 也就意味着它要在onclick事件是使用
+        document.querySelector('.box').onclick = function () {
+            if (box.requestFullscreen) {
+                box.requestFullscreen();
+            } else if (box.webkitRequestFullScreen) {
+                box.webkitRequestFullScreen();
+            } else if (box.mozRequestFullScreen) {
+                box.mozRequestFullScreen();
+            }
+        }
+    </script>
+</body>
+</html>

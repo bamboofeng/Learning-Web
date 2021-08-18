@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>transition属性：仿小米商品详情</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #eeeeee;
+        }
+
+        .content {
+            width: 800px;
+            height: 320px;
+            padding-left: 20px;
+            margin: 80px auto;
+        }
+
+        .item {
+            width: 230px;
+            height: 300px;
+            text-align: center;
+            margin-right: 20px;
+            background-color: #FFF;
+            float: left;
+            position: relative;
+            top: 0;
+            overflow: hidden; /*让溢出的内容隐藏起来。意思是让下方的橙色方块先躲起来*/
+            transition: all .5s; /*从最初到鼠标悬停时的过渡*/
+        }
+
+        .item img{
+            width: 230px;
+            height: 300px;
+        }
+
+        .item .desc { /*作为隐藏在图片下的橘色方块*/
+            position: absolute;
+            left: 0;
+            bottom: -80px;
+            width:100%;
+            height: 80px;
+            background-color: #ff6700;
+            transition: all .5s;
+        }
+
+        /* 鼠标悬停时，让item整体往上移动5px，且加一点阴影 */
+        .item:hover {
+            top: -5px;
+            box-shadow:0 0 15px #AAA;
+        }
+
+        /* 鼠标悬停时，让下方的橙色方块现身 */
+        .item:hover .desc {
+            bottom: 0;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="item">
+            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/ab07e0fcbec3beb8b0f409db8bee8da4.jpg?thumb=1&w=400&h=400&f=webp&q=90" alt="">
+        </div>
+
+        <div class="item">
+            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/314df4955a5f305de306155078bb103d.jpg?thumb=1&w=400&h=400&f=webp&q=90" alt="">
+            <span class="desc"></span>
+        </div>
+    
+        <div class="item">
+            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/388b13bf52ab0d6a56bc9f195b5f1dd5.jpg?thumb=1&w=400&h=400&f=webp&q=90" alt="">
+            <span class="desc"></span>
+        </div>
+    </div>
+</body>
+</html>

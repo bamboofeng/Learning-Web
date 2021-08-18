@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text"/>
+    <button>sessionStorge存储</button>
+    <button>sessionStorge获取</button>
+    <button>sessionStorge更新</button>
+    <button>sessionStorge删除</button>
+    <button>sessionStorge清除</button>
+
+    <script>
+        var text = document.querySelector('input');
+
+        var btns = document.querySelectorAll('button');
+
+        btns[0].onclick = function () {
+            window.sessionStorage.setItem('userName', text.value);
+            window.sessionStorage.setItem('pwd', '123456');
+            window.sessionStorage.setItem('age', 18);
+        }
+
+        btns[1].onclick = function () {
+            text.value = window.sessionStorage.getItem('userName');
+        }
+
+        btns[2].onclick = function () {
+            window.sessionStorage.setItem('userName',text.value);
+        }
+
+        btns[3].onclick = function () {
+            window.sessionStorage.removeItem('userName');
+        }
+
+        btns[4].onclick = function () {
+            window.sessionStorage.clear();
+        }
+
+        
+
+    </script>
+</body>
+</html>
