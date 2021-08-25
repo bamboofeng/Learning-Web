@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 父相子绝 */
+        a.weixin {
+            position: relative;
+            margin: 100px;
+            line-height: 300px;
+        }
+
+        .weixin::after {
+            /* 伪元素的内容是行内元素，是无法设置宽高的。想设置宽高，可以将其设为背景，用background-size设置宽高 */
+            content: url(https://gitee.com/findingjack/write-picture/raw/master/qrcode_for_gh_ea5c38a8652c_258.jpg);
+            position: absolute;
+            right: -28px;
+            top: -135px;
+            z-index: 99;
+            width: 120px;
+            height: 120px;
+            border: 5px solid #0095ba;
+            border-radius: 4px;
+            -webkit-transform-origin: top right;
+            transform-origin: top right;
+            -webkit-transform: scale(0);
+            transform: scale(0); /*缩放图像为0*/
+            opacity: 0; /*将透明度弄为0，两者一起实现二维码的隐藏*/
+            -webkit-transition: all .4s ease-in-out;
+            transition: all .4s ease-in-out
+        }
+
+        .weixin:hover::after{
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        a.weixin_qrcode {
+            position: relative;
+        }
+
+        .weixin_qrcode img.qrcode {
+            position: absolute;
+            z-index: 99;
+            top: -135px;
+            right: -28px;
+            width: 7.5rem;
+            max-width: none;
+            height: 7.5rem;
+            transform: scale(0);
+            transform-origin: top right;
+            opacity: 0;
+            border: .3125rem solid #0085ba;
+            border-radius: .25rem;
+            -webkit-transition: all .4s ease-in-out;
+            -o-transition: all .4s ease-in-out;
+            transition: all .4s ease-in-out;
+
+        }
+
+        .weixin_qrcode:hover img.qrcode {
+            transform: scale(1);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- 法一：图片放在的伪元素里 -->
+    <!-- <a>作为按钮使用，不做跳转，实现url访问拦截 -->
+    <a href="javascript:" class="weixin">wechat</a>
+
+    <!-- 法二：图片直接放在img标签内，方便修改链接 -->
+    <a class="weixin_qrcode" href="javascript:">
+        <img class="qrcode" src="https://gitee.com/findingjack/write-picture/raw/master/qrcode_for_gh_ea5c38a8652c_258.jpg" alt="微信二维码">
+    //此处为微信图标。
+    </a>
+</body>
+</html>
