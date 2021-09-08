@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border: 0;
+        }
+
+        .all {
+            width: 500px;
+            height: 200px;
+            padding: 7px;
+            border: 1px dolid #ccc;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .screen {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .screen li {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            float: left;
+        }
+
+        .screen ul {
+            position: absolute;
+            left: 0;
+            top: 0px;
+            width: 3000px;
+        }
+
+        .all ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        .all ol li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .all ol lo.current {
+            background: yellow;
+        }
+
+        #arr {
+            display: none;
+        }
+
+        #arr span {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            margin-top: -20px;
+            background: #000;
+            cursor: pointer;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-family: '黑体';
+            font-size: 30px;
+            color: #fff;
+            opacity: 0.3;
+            border: 1px solid #fff;
+        }
+
+        #arr #right {
+            right: 5px;
+            left: auto;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            // 1.获取事件源及相关元素。（老三部）
+            var all = document.getElementById("all");
+            var screen = all.firstElementChild || all.firstChild
+        }
+    </script>
+</head>
+<body>
+    <div class="all" id="all">
+        <div class="screen" id="screen">
+            <ul id="ul">
+                <li><img src="images/image1.jpg" width="500" height="200" alt=""></li>
+                <li><img src="images/image2.jpg" width="500" height="200" alt=""></li>
+                <li><img src="images/image3.jpg" width="500" height="200" alt=""></li>
+                <li><img src="images/image4.jpg" width="500" height="200" alt=""></li>
+                <li><img src="images/image5.jpg" width="500" height="200" alt=""></li>
+            </ul>
+            <ol>
+
+            </ol>
+            <div id="arr">
+                <span id="left"></span>
+                <span id="right"></span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
