@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            position: fixed;
+            bottom: 100px;
+            right: 50px;
+            cursor: pointer;
+            /* 先隐藏，到一定高度时再显示 */
+            display: none; 
+            border: 1px solid #000;
+        }
+
+        div {
+            width: 1210px;
+            margin: 100px auto;
+            text-align: center;
+            font: 500 26px/35px "simsun";
+            color: red;
+        }
+    </style>
+    <script src="tool-017.js"></script>
+    <script>
+        window.onload = function () {
+            // 需求：头部滚动超过100px时显示小火箭，然后点击小火箭缓慢移动到最顶端
+            // 重点：scrollTo（x，y）;浏览器显示区域跳转到指定的坐标
+            // 实现步骤
+            // 1、老三步
+            var img = document.getElementsByTagName("img")[0];
+            window.onscroll = function () {
+                // 被卷入的高度大于100时显示小火箭，否则隐藏
+                // 2.显示小火箭
+                if (scroll().top > 100) {
+                    img.style.display = "block"
+                } else {
+                    img.style.display = "none";
+                }
+                // 每次移动滚动条时，都给leader赋值，模拟leader获取距离顶部的距离
+                leader = scroll().top;
+            }
+            // 3.缓动跳转到页面最顶端，利用016封装的缓动动画
+            var timer = null;
+            var target = 0; //目标位置
+            var leader = 0; //显示区域自身的位置
+            img.onclick = function () {
+                // 技术点：window.scrollTo(0,0)；
+                // 要用定时器，先清定时器,避免定时器叠加造成多层动画效果
+                clearInterval(timer);
+                timer = setInterval(function () {
+                    // 获取步长
+                    var step = (target - leader) / 10;
+                    // 二次处理步长
+                    step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                    leader = leader + step; //往上移动的过程中，step是负数。当前位置减去步长，就等于下一步的位置。
+                    //显示区域移动
+                    window.scrollTo(0, leader);
+                    //清除定时器
+                    if (leader === 0) {
+                        clearInterval(timer);
+                    }
+                }, 25);
+
+            }
+        }
+    </script>
+</head>
+<body>
+    <img src="images/top.jfif" alt="">
+    <div>
+        我是最顶端……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+        往上飞……<br>
+    </div>
+</body>
+</html>
