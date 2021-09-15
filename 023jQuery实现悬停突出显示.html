@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        body {
+            background: #000;
+        }
+
+        .wrap {
+            margin: 100px auto 0;
+            width: 630px;
+            height: 394px;
+            padding: 10px 0 0 10px;
+            background: #000;
+            overflow: hidden;
+            border: 1px solid #fff;
+        }
+
+        .wrap li {
+            float: left;
+            margin: 0 10px 10px 0;
+        }
+
+        .wrap img {
+            display: block;
+            border: 0;
+        }
+    </style>
+
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $(window).ready(function () {
+            // 需求：把鼠标放入li中，其他的li半透明，当前盒子的opacity值为1
+            $(".wrap").find("li").mouseenter(function () {
+                // 链式编程
+                $(this).css("opacity", 1).siblings("li").css("opacity", 0.4);
+            })
+
+            // 离开wrap的时候所有的opacity值为1
+            $(".wrap").mouseleave(function () {
+                // $this.children().children("li").css("opacity", 1);
+                $(".wrap li").css("opacity", 1);
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <ul>
+            <li><a href="#"><img src="images/image1.jpg" width="200px" height="200px" alt=""></a></li>
+            <li><a href="#"><img src="images/image1.jpg" width="200px" height="200px" alt=""></a></li>
+            <li><a href="#"><img src="images/image1.jpg" width="200px" height="200px" alt=""></a></li>
+            <li><a href="#"><img src="images/image1.jpg" width="200px" height="200px" alt=""></a></li>
+            <li><a href="#"><img src="images/image1.jpg" width="200px" height="200px" alt=""></a></li>
+            <li><a href="#"><img src="images/image1.jpg" width="200px" height="200px" alt=""></a></li>
+        </ul>
+    </div>
+</body>
+</html>
