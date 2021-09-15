@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //需求：隔行变色；鼠标悬停时还要另外变色
+            var jqli1 = $("li:odd");
+            var jqli2 = $("li:even");
+            jqli1.css("background","#cccccc");
+            jqli2.css("background","white");
+
+            // 鼠标悬停时变色
+            var color = "";
+            $("li").mouseenter(function () {
+                color = $(this).css("background"); ////先把之前的颜色保存下来，鼠标离开时还原
+                $(this).css("background","green");
+            });
+            // 鼠标移开时，恢复原来颜色
+            $("li").mouseleave(function () {
+                $(this).css("background",color);
+            })
+        })
+    </script>
+</head>
+<body>
+    <ul>
+        <li>选我选我选我选我</li>
+        <li>选我选我选我选我</li>
+        <li>选我选我选我选我</li>
+        <li>选我选我选我选我</li>
+        <li>选我选我选我选我</li>
+        <li>选我选我选我选我</li>
+    </ul>
+</body>
+</html>
