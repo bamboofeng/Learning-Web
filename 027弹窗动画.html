@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .ad {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            width: 230px;
+            height: 120px;
+            background-image: url(images/呢大衣.jpg);
+            display: none;
+        }
+
+        .ad span {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            background-image: url(images/close.png);
+            cursor: pointer;
+        }
+    </style>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $(function () {
+            // 需求：让广告ad部分，先滑入，再滑出，再淡入。然后绑定事件，点击span弹出
+            $(".ad").slideDown(1000).slideUp(1000).fadeIn(1000).children("span").click(function () {
+                $(this).parent().fadeOut(1000);                
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="ani">我是内容</div>
+    <div class="ad">
+        <span></span>
+    </div>
+</body>
+</html>
