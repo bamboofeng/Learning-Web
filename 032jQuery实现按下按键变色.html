@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap {
+            width: 400px;
+            height: 400px;
+            margin: 100px auto 0;
+        }
+
+        .wrap h1 {
+            text-align: center;
+        }
+
+        .wrap div {
+            width: 400px;
+            height: 300px;
+            background-color: pink;
+            font-size: 30px;
+            text-align: center;
+            line-height: 300px;
+        }
+    </style>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        $(function () {
+            //需求：在页面上，按键.是哪个颜色的首写字母div就改变为该颜色，然后span内容赋值。
+            //步骤：
+            //1.给document绑定keyup事件
+            //2.获取值，根据此值，给div和span上色和内容
+
+            var div = $("#bgChange");
+            var span = $("#keyCodeSpan");
+
+            // 绑定事件
+            $(document).keyup(function (event) {
+                // 键盘弹出时，触发事件 
+                // 调用方法
+                setColor(event.keyCode);
+            });
+
+            function setColor(keyCode) {
+                // alert(event.keyCode);
+                //2.获取值，根据此值，给div和span上色和内容
+                switch (keyCode) {
+                    case 80:
+                        // P
+                        //修改内容pink
+                        setEle("pink", keyCode);
+                        break;
+                    case 66:
+                        // B
+                        //修改内容blue
+                        setEle("blue", keyCode);
+                        break;
+                    case 79:
+                        // O
+                        //修改内容orange
+                        setEle("orange", keyCode);
+                        break;
+                    case 82:
+                        // R
+                        //修改内容red
+                        setEle("red", keyCode);
+                        break;
+                    case 89:
+                        // Y
+                        //修改内容yellow
+                        setEle("yellow", keyCode);
+                        break;
+                    default :
+                        alert("系统没有设置该颜色！");
+                }
+
+                function setEle(a, b) {
+                    div.css("background-color", a);
+                    span.text(b);
+                }
+
+            }
+            
+        })
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <h1>按键改变颜色</h1>
+        <div id="bgChange">
+            keyCode为：
+            <span id="keyCodeSpan">80</span>
+        </div>
+    </div>
+</body>
+</html>
