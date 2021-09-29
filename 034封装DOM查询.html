@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        // 利用$('#idname')查询节点，有可能占用jQuery的函数入口，可改成 function Elem(val)
+        $ = function (val) {
+            switch(val.charAt(0)) {
+                // 区分节点类型
+            case '#' :
+                // 查询id节点
+                return document.getElementById(val.substring(1));
+                break;
+            case '.' :
+                // 查询class节点
+                val = val.replace('.','');
+                if(document.getElementsByClassName)
+                return document.getElementsByClassName(val);
+                else {
+                    var obj = document.getElementsByTagName('*'),len = obj.length,arr=[];
+        
+                    for(var i=0;i<len;i++) {
+                        if(obj[i].className == val) {
+                        arr[arr.length] = obj[i];
+                        }
+                    }
+            
+                    return arr;
+                }
+                break;
+            default :
+                if(document.getElementsByName(val).length > 0)
+                    return document.getElementsByName(val);
+                else
+                    return document.getElementsByTagName(val);
+            }
+        }
+        // 此外可以利用原型链，给构造函数赋值，实现对不同节点的查询
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>
