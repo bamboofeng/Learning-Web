@@ -1,0 +1,30 @@
+<!-- 放到WAMP环境内测试 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Ajax 发送 get 请求</h1>
+    <input type="button" value="发送get_ajax请求" id="btnAjax" />
+
+    <script src="043封装Ajax.js"></script>
+    <script type="text/javascript">
+        // 绑定点击事件
+        document.querySelector('#btnAjax').onclick = function() {
+            // 这里直接使用上面封装的 myAjax() 方法即可
+            myAjax('043.php', (res) => {
+                console.log(res);
+                console.log('数据返回成功');
+                // 显示在页面上
+                document.querySelector('h1').innerHTML = res;
+                // alert(xhr.responseText);
+            });
+        };
+    </script>
+</body>
+
+</html>

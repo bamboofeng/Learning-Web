@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>异步加载图片</title>
+</head>
+
+<body>
+    <!-- 原生的onload是异步事件 -->
+    <script>
+        // 加载图片的异步任务
+        function loadImage(file, success, fail) {
+            const img = new Image();
+            img.src = file;
+            img.onload = () => {
+                // 图片加载成功
+                success(img);
+            };
+            img.onerror = () => {
+                // 图片加载失败
+                fail(new Error('img load fail'));
+            };
+        }
+
+        loadImage(
+            'images/image1.jpg',
+            (img) => {
+                console.log('图片加载成功');
+                document.body.appendChild(img);
+                img.style.border = 'solid 2px red';
+            },
+            (error) => {
+                console.log('图片加载失败');
+                console.log(error);
+            }
+        )
+    </script>
+</body>
+
+</html>
