@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XML解析</title>
+</head>
+
+<body>
+    <person id="personXML">
+        <name>fox</name>
+        <age>18</age>
+        <skill>小花花</skill>
+    </person>
+
+    <script type="text/javascript">
+        var xmlObj = document.getElementById('personXML');
+        var name = xmlObj.getElementsByTagName('name')[0].innerHTML;
+
+        console.log(name);
+    </script>
+</body>
+
+</html>

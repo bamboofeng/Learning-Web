@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>经php获取解析xml</title>
+</head>
+
+<body>
+    <input type="button" value="获取XML数据" id="getXML">
+</body>
+
+</html>
+<script>
+    document.querySelector('#getXML').onclick = function() {
+        var ajax = new XMLHttpRequest();
+
+        ajax.open('get', '046.php');
+
+        ajax.send();
+
+        ajax.onreadystatechange = function() {
+            if (ajax.readyState == 4 && ajax.status == 200) {
+                // 如果返回的是xml文件
+                console.log(ajax.responseText);
+
+                // 异步 对象中 有另外一个属性 用来专门获取 xml
+                // xml对象 在浏览器端 就是一个 document对象
+                // 解析时 可以直接使用 querySelector 或者 getElementById等等 document对象 有的语法
+                console.log(ajax.responseXML);
+                console.log(ajax.responseXML.querySelector('#personXML').innerHTML);
+                // 下面这个 页面文档对象 如果要获取某个标签
+                console.log(window.document);
+            }
+        }
+    }
+</script>
